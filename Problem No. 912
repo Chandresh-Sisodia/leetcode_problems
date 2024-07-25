@@ -1,0 +1,34 @@
+// ------------------------------------------   Knive solution   ------------------------------------------
+class Solution {
+    public int[] sortArray(int[] nums) {
+        int n = nums.length;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                if(nums[i]>nums[j]){
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j]=temp;
+                }
+            }
+        }
+        return nums;
+    }
+}
+
+// ------------------------------------------------   Optimize Solution   --------------------------------------------
+
+class Solution {
+  public int[] sortArray(int[] nums) {
+    var map = new int[100001];
+
+    for (var n : nums)
+      map[n + 50000]++;
+
+    var k = 0;
+    for (var i = 0; i < 100001; i++)
+      for (var j = 0; j < map[i]; j++)
+        nums[k++] = i - 50000;
+
+    return nums;
+  }
+}
